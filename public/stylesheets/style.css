@@ -1,0 +1,17 @@
+body,
+* {
+  font-family: 'Nexa-Light', sans-serif;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  font-size: 1.6rem;
+}
+html {
+  font-size: 62.5%;
+}
+form h2{
+    margin: 10px 0;
+}
+input{
+    background-color:  #fbf9f9;
+}

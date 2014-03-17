@@ -1,0 +1,32 @@
+extends layoutlogin
+
+block content
+    section.loginPage
+        h1 <i class="fa fa-sign-in"></i> SignUp
+        
+        if(message.length > 0)
+            div #{ message }
+
+        form(action="/signup", method="post")
+            h2 Local Registration
+            input#fname(type="text", name="firstName", placeholder="First Name")
+
+            input#gender(type="text", name="gender", placeholder="Gender")
+
+            input(type="text", name="loginName", placeholder="Login Name")
+
+            input(type="text", name="email", placeholder="Email")
+
+            input(type="password", name="password", placeholder="Password")
+
+            input.submit(type="submit", value="Register")
+            br
+            br
+            h2 Social Registration
+        ul
+            li
+                a.facebook(href="/auth/facebook") <i class="fa fa-facebook"></i> Register with Facebook
+            li
+                a.twitter(href="/auth/twitter") <i class="fa fa-twitter"></i> Register with Twitter
+            li
+                a.google(href="/auth/google") <i class="fa fa-google-plus"></i> Register with Google

@@ -1,0 +1,35 @@
+doctype html
+html
+    head
+        meta(charset="utf-8")
+        title= title
+        link(rel='stylesheet', href='/stylesheets/main.css')
+        link(rel="shortcut icon", href="meta/apple-touch-icon.png")
+        meta(name="apple-mobile-web-app-capable", content="yes")
+        meta(name="HandheldFriendly", content="yes")
+        meta(name="viewport", content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0, maximum-scale=1, user-scalable=no, minimal-ui")
+
+    body
+        block content
+
+        script(src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js")
+        script(src="javascripts/animframe_polyfill.js")
+        script(src="javascripts/keyboard_input_manager.js")
+        script(src="javascripts/html_actuator.js")
+        script(src="javascripts/grid.js")
+        script(src="javascripts/tile.js")
+        script(src="javascripts/local_score_manager.js")
+        script(src="javascripts/game_manager.js")
+        script(src="javascripts/application.js")
+        script.
+            var sendData = function(bestScore){
+                $.ajax({
+                    url: "/",
+                    type: "post",
+                    data: { name: #{user.id}, score: bestScore, date: new Date()},
+                    contentType: 'application/json',
+                    success: function (data) {
+                        console.log(data);
+                    }
+                });
+            }

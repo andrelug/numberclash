@@ -1,0 +1,56 @@
+extends layout
+
+block content
+    div.loginBar
+        if(!user.id)
+            div.login
+                ul
+                    li: a.loginUser(href="/login", alt="login") Login
+                    li: a.signup(href="/signup", alt="signup") Signup
+        else
+            div.logged
+                ul
+                    li: a(href="/profile") #{user.name.first}
+                    li: a(href="/logout") Log Out
+
+
+    div.container
+        div.heading
+            h1.title NumberClash
+            div.scores-container
+                div.score-container 0
+                div.best-container 0
+
+        div.game-container
+            div.game-message
+                p
+                div.lower
+                    a.keep-playing-button keep going
+                    a.retry-button Try again
+            div.grid-container
+                div.grid-row
+                    div.grid-cell
+                    div.grid-cell
+                    div.grid-cell
+                    div.grid-cell
+                div.grid-row
+                    div.grid-cell
+                    div.grid-cell
+                    div.grid-cell
+                    div.grid-cell
+                div.grid-row
+                    div.grid-cell
+                    div.grid-cell
+                    div.grid-cell
+                    div.grid-cell
+                div.grid-row
+                    div.grid-cell
+                    div.grid-cell
+                    div.grid-cell
+                    div.grid-cell
+
+            div.tile-container
+
+        p.game-explanation <strong class="important">How to play:</strong>Use your <strong>arrow keys</strong> to move the tiles. When two tiles with the same number touch, they <strong>merge into one!</strong>
+        hr
+        p Based on version created by <a href="http://gabrielecirulli.com" target="_blank">Gabriele Cirulli.</a> Based on <a href="https://itunes.apple.com/us/app/1024!/id823499224" target="_blank">1024 by Veewo Studio</a> and conceptually similar to <a href="http://asherv.com/threes/" target="_blank">Threes by Asher Vollmer.</a>

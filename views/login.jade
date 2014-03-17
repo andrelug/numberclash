@@ -1,0 +1,23 @@
+extends layoutlogin
+
+block content
+    section.loginPage
+        h1 <i class="fa fa-sign-in"></i> Log In
+        
+        if(message.length > 0)
+            div #{ message }
+
+        form(action="/login", method="post")
+            input(type="text", name="email", placeholder="Email")
+            br
+            input(type="password", name="password", placeholder="Password")
+            br
+            input(type="submit", value="Log In")
+
+        ul
+            li
+                a.facebook(href="/auth/facebook") <i class="fa fa-facebook"></i> Facebook Login
+            li
+                a.twitter(href="/auth/twitter") <i class="fa fa-twitter"></i> Twitter Login
+            li
+                a.google(href="/auth/google") <i class="fa fa-google-plus"></i> Google Login
