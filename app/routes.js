@@ -34,12 +34,14 @@ module.exports = function (app, passport, mongoose) {
         var score = req.body.score;
         var date = new Date();
         var time = req.body.time;
+        var won = req.body.win;
 
         if (!req.user) {
             new Anon({
                 score: score,
                 date: date,
-                time: time
+                time: time,
+                won: won
             }).save(function (err, docs) {
                 if (err) res.json(err);
                 res.end();
@@ -48,7 +50,7 @@ module.exports = function (app, passport, mongoose) {
             var user = req.user;
             Users.update({ 'name.loginName': user.name.loginName },
             { $set: { 'scores.best': best },
-                $push: { 'scores.history': { score: score, date: date, time: time} }
+                $push: { 'scores.history': { score: score, date: date, time: time, won: won} }
             },
             function (err) {
                 if (err) throw err;
