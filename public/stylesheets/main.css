@@ -838,21 +838,24 @@ body{
 }
 
 /* Login and SignUp pages */
-.loginPage li a {
+.loginPage li a, .sharing li a {
   text-align: center;
   text-decoration: none;
   height: auto;
   color: #fff;
   padding: 1rem;
-  width: 24.3rem;
   opacity: 0.9;
   display: block;
 }
-.loginPage li a:hover {
+.loginPage li a:hover, .sharing li a:hover {
   background-color: #7c8080;
 }
 .loginPage ul {
   margin-top: 3rem;
+}
+.sharing ul li a{
+    margin: 20px auto 0;
+
 }
 .loginPage {
   width: 30%;
@@ -922,4 +925,26 @@ input {
 }
 strong{
     font-weight: bold;
+}
+.at-svc-compact{
+    display: none !important;
+}
+.at4-follow-container{
+    margin-top: 70px;
+}
+.ad{
+    position: absolute;
+    left: 5%;
+    top: 200px;;
+}
+@media screen and (max-width: 950px) {
+    .ad{
+        position: relative;
+        top: 0;
+        left: auto;
+    }
+    .ad ins{
+    display: block !important;
+    margin: 10px auto;
+}
 }
