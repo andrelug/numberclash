@@ -19,14 +19,16 @@ module.exports = function (app, passport, mongoose) {
     // =====================================
     app.get('/', function (req, res, next) {
         var user = req.user;
-        if (!user) {
-            res.render("index", { message: req.flash('signupMessage'), user: '' });
-        } else {
-            Users.find({ deleted: false }, function (err, docs) {
-                sessionReload(req, res, next);
-                res.render('index', { users: docs, user: user });
+        Anon.find({}, { score: 1, _id: 0 }).sort({ 'score': -1 }).limit(10).exec(function (err, docs) {
+            Users.find({}, {'scores.best':1, 'name.first': 1, 'photo': 1, _id: 0}).sort({'scores.best': -1}).limit(10).exec(function (err, udocs) {
+                if (!user) {
+                    res.render("index", { message: req.flash('signupMessage'), user: '', lead: docs, ulead: udocs });
+                } else {
+                    sessionReload(req, res, next);
+                    res.render('index', { user: user });
+                }
             });
-        }
+        });s
     });
 
     app.post('/score', function (req, res) {

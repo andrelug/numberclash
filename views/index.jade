@@ -16,7 +16,41 @@ block content
                             |#{user.name.first}
                     li: a(href="/logout") Log Out
     div.leaderboard
-        h2 Leaderboards Coming Soon!
+        h2 Leaderboards
+        section.tabs
+            input#tab-1.tab-selector-1(type="radio", name="radio-set", checked="checked")
+            label.tab-label-1(for="tab-1") Global
+
+            input#tab-2.tab-selector-2(type="radio", name="radio-set")
+            label.tab-label-2(for="tab-2") NC Users
+
+            div.clear-shadow
+
+            div.tabcontent
+                div.content-1
+
+                    table
+                        tr
+                            td User
+                            td Score
+                        for leads in lead
+                            tr
+                                td: p Anonymous
+                                td #{leads.score}
+
+                div.content-2
+                    table
+                        tr
+                            td User
+                            td Score
+                        for uleads in ulead
+                            tr
+                                td
+                                    if(uleads.photo)
+                                        img.lphoto(src="#{uleads.photo}")
+                                    p #{uleads.name.first}
+
+                                td #{uleads.scores.best}
 
     div.container
         div.heading
@@ -69,6 +103,8 @@ block content
         p.game-explanation <strong class="important">How to play:</strong>Use your <strong>arrow keys</strong> to move the tiles. When two tiles with the same number touch, they <strong>merge into one!</strong> The more tiles you merge, the more <strong>points you earn!</strong>
         hr
         p.created Based on version created by <a href="http://gabrielecirulli.com" target="_blank">Gabriele Cirulli.</a> Based on <a href="https://itunes.apple.com/us/app/1024!/id823499224" target="_blank">1024 by Veewo Studio</a> and conceptually similar to <a href="http://asherv.com/threes/" target="_blank">Threes by Asher Vollmer.</a>
+        hr
+        p Contact : numbersclash@normalquestions.com
         
         
         div.ad
