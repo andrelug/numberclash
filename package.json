@@ -25,7 +25,8 @@
     "passport-twitter": "*",
     "passport-google-oauth": "*",
     "connect-flash": "*",
-    "bcrypt-nodejs": "*"
+    "bcrypt-nodejs": "*",
+    "newrelic": "*"
   },
   "noAnalyze": true,
   "license": "Apache",

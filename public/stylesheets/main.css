@@ -944,7 +944,22 @@ strong{
         left: auto;
     }
     .ad ins{
-    display: block !important;
-    margin: 10px auto;
+        display: block !important;
+        margin: 10px auto;
+    }
+    
 }
+@media screen and (max-width: 1150px) {
+    .leaderboard{
+        display: none;
+    }
+}
+
+.leaderboard{
+    position: absolute;
+    right: 3%;
+    top: 200px;
+    padding: 10px;
+    background-color: white;
+    box-shadow: 1px 1px 1px black;
 }
