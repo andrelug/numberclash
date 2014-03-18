@@ -17,12 +17,14 @@ function GameManager(size, InputManager, Actuator, ScoreManager) {
 GameManager.prototype.restart = function () {
   this.actuator.continue();
   this.setup();
+  Reset();
 };
 
 // Keep playing after winning
 GameManager.prototype.keepPlaying = function () {
   this.keepPlaying = true;
   this.actuator.continue();
+  Start();
 };
 
 GameManager.prototype.isGameTerminated = function () {
@@ -47,6 +49,8 @@ GameManager.prototype.setup = function () {
 
   // Update the actuator
   this.actuate();
+
+  Start();
 };
 
 // Set up the initial tiles to start the game with

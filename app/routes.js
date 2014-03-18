@@ -1,4 +1,5 @@
 var Users = require('./models/user');
+var Anon = require('./models/anon');
 var func = require('../config/functions');
 
 // Session check function
@@ -29,22 +30,29 @@ module.exports = function (app, passport, mongoose) {
     });
 
     app.post('/score', function (req, res) {
+        var best = req.body.best;
+        var score = req.body.score;
+        var date = new Date();
+        var time = req.body.time;
 
         if (!req.user) {
-            res.end(JSON.stringify(req.body));
+            new Anon({
+                score: score,
+                date: date,
+                time: time
+            }).save(function (err, docs) {
+                if (err) res.json(err);
+                res.end();
+            });
         } else {
             var user = req.user;
-            var id = req.user.id;
-            var best = req.body.best;
-            var score = req.body.score;
-            var date = new Date();
-            res.end(best + ' ' + score + ' ' + date);
             Users.update({ 'name.loginName': user.name.loginName },
             { $set: { 'scores.best': best },
-                $push: { 'scores.history': { score: score, date: date}}
+                $push: { 'scores.history': { score: score, date: date, time: time} }
             },
             function (err) {
                 if (err) throw err;
+                res.end();
             })
         }
 

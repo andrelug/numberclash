@@ -1,6 +1,5 @@
 body,
 * {
-  font-family: 'Nexa-Light', sans-serif;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -15,3 +14,6 @@ form h2{
 input{
     background-color:  #fbf9f9;
 }
+
+/* PROFILE PAGE */
+

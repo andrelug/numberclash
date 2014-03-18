@@ -13,6 +13,11 @@ block content
                     li: a(href="/profile") #{user.name.first}
                     li: a(href="/logout") Log Out
 
+    div
+        span#timer 00 : 00 : 00 : 000
+        a#start(href="", title="Start") Start |
+        a#stop.tog(href="") Stop
+        a#reset.tog(href="") Reset
 
     div.container
         div.heading

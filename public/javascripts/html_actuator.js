@@ -129,17 +129,18 @@ HTMLActuator.prototype.updateBestScore = function (bestScore) {
 HTMLActuator.prototype.message = function (won, score, bestScore) {
   var type    = won ? "game-won" : "game-over";
   var message = won ? "You win!" : "Game over!";
-
+    var time = $('#timer').text().split(':');
     $.ajax({
         url: "/score",
         type: "post",
-        data: JSON.stringify({ best: bestScore, score: score}),
+        data: JSON.stringify({ best: bestScore, score: score, time: time }),
         contentType: 'application/json',
         success: function (data) {
             console.log(data);
         }
     });
-  
+    
+    Stop();  
 
   this.messageContainer.classList.add(type);
   this.messageContainer.getElementsByTagName("p")[0].textContent = message;
