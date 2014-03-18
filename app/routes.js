@@ -25,7 +25,7 @@ module.exports = function (app, passport, mongoose) {
                     res.render("index", { message: req.flash('signupMessage'), user: '', lead: docs, ulead: udocs });
                 } else {
                     sessionReload(req, res, next);
-                    res.render('index', { user: user });
+                    res.render('index', { user: user, lead: docs, ulead: udocs});
                 }
             });
         });s
