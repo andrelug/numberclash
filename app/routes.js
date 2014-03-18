@@ -14,10 +14,10 @@ var sessionReload = function(req, res, next){
 module.exports = function (app, passport, mongoose) {
 
     // =====================================
-	// HOME PAGE (with login links) ========
-	// =====================================
-	app.get('/', function(req, res, next) {
-		var user = req.user;
+    // HOME PAGE (with login links) ========
+    // =====================================
+    app.get('/', function (req, res, next) {
+        var user = req.user;
         if (!user) {
             res.render("index", { message: req.flash('signupMessage'), user: '' });
         } else {
@@ -26,7 +26,29 @@ module.exports = function (app, passport, mongoose) {
                 res.render('index', { users: docs, user: user });
             });
         }
-	});
+    });
+
+    app.post('/score', function (req, res) {
+
+        if (!req.user) {
+            res.end(JSON.stringify(req.body));
+        } else {
+            var user = req.user;
+            var id = req.user.id;
+            var best = req.body.best;
+            var score = req.body.score;
+            var date = new Date();
+            res.end(best + ' ' + score + ' ' + date);
+            Users.update({ 'name.loginName': user.name.loginName },
+            { $set: { 'scores.best': best },
+                $push: { 'scores.history': { score: score, date: date}}
+            },
+            function (err) {
+                if (err) throw err;
+            })
+        }
+
+    });
 
     // =====================================
     // USER SIGNUP =========================
@@ -168,8 +190,8 @@ module.exports = function (app, passport, mongoose) {
     // the callback after google has authorized the user
     app.get('/connect/google/callback',
 		passport.authorize('google', {
-			successRedirect: '/',
-			failureRedirect: '/'
+		    successRedirect: '/',
+		    failureRedirect: '/'
 		})
     );
 
@@ -217,26 +239,26 @@ module.exports = function (app, passport, mongoose) {
     // =====================================
     // PROFILE =============================
     // =====================================
-    app.get('/profile', function(req, res, next){
-        
+    app.get('/profile', function (req, res, next) {
+
         var user = req.user;
         if (!user) {
             res.redirect("signup");
         } else {
             Users.find({ deleted: false }, function (err, docs) {
                 sessionReload(req, res, next);
-                res.render('profile/index', {user: user });
+                res.render('profile/index', { user: user });
             });
         }
     });
 
     function isLoggedIn(req, res, next) {
 
-	    // if user is authenticated in the session, carry on 
-	    if (req.isAuthenticated())
-		    return next();
+        // if user is authenticated in the session, carry on 
+        if (req.isAuthenticated())
+            return next();
 
-	    // if they aren't redirect them to the home page
-	    res.redirect('/');
+        // if they aren't redirect them to the home page
+        res.redirect('/');
     }
 }

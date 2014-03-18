@@ -33,7 +33,7 @@ var UserSchema = new mongoose.Schema({
     },
     scores:{
         best: Number,
-        history:[{score: Number, date: Date}]
+        history:[{_id: false, score: Number, date: Date}]
     },
     social: {
         facebook: {

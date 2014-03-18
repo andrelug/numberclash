@@ -23,16 +23,12 @@ HTMLActuator.prototype.actuate = function (grid, metadata) {
 
     self.updateScore(metadata.score);
     self.updateBestScore(metadata.bestScore);
-    var best = self.updateBestScore(metadata.bestScore);
-
-    //send data back to the server
-    sendData(best);
 
     if (metadata.terminated) {
       if (metadata.over) {
-        self.message(false); // You lose
+        self.message(false, metadata.score, metadata.bestScore); // You lose
       } else if (metadata.won) {
-        self.message(true); // You win!
+        self.message(true, metadata.score, metadata.bestScore); // You win!
       }
     }
 
@@ -122,15 +118,28 @@ HTMLActuator.prototype.updateScore = function (score) {
 
     this.scoreContainer.appendChild(addition);
   }
+
 };
+
 
 HTMLActuator.prototype.updateBestScore = function (bestScore) {
   this.bestContainer.textContent = bestScore;
 };
 
-HTMLActuator.prototype.message = function (won) {
+HTMLActuator.prototype.message = function (won, score, bestScore) {
   var type    = won ? "game-won" : "game-over";
   var message = won ? "You win!" : "Game over!";
+
+    $.ajax({
+        url: "/score",
+        type: "post",
+        data: JSON.stringify({ best: bestScore, score: score}),
+        contentType: 'application/json',
+        success: function (data) {
+            console.log(data);
+        }
+    });
+  
 
   this.messageContainer.classList.add(type);
   this.messageContainer.getElementsByTagName("p")[0].textContent = message;
