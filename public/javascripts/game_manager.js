@@ -24,7 +24,7 @@ GameManager.prototype.restart = function () {
 GameManager.prototype.keepPlaying = function () {
   this.keepPlaying = true;
   this.actuator.continue();
-  Start();
+  /* Start(); */
 };
 
 GameManager.prototype.isGameTerminated = function () {
