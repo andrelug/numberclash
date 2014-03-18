@@ -28,7 +28,7 @@ module.exports = function (app, passport, mongoose) {
                     res.render('index', { user: user, lead: docs, ulead: udocs});
                 }
             });
-        });s
+        });
     });
 
     app.post('/score', function (req, res) {
