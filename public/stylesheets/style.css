@@ -5,6 +5,10 @@ body,
   box-sizing: border-box;
   font-size: 1.6rem;
 }
+body, html{
+    background: url('../images/crossword.png') repeat;
+    margin-top: 40px;
+}
 html {
   font-size: 62.5%;
 }
@@ -17,3 +21,8 @@ input{
 
 /* PROFILE PAGE */
 
+.profileImg{
+    width: 140px;
+    box-shadow: 1px 1px 1px black;
+    -webkit-box-shadow: 1px 1px 1px black;
+}

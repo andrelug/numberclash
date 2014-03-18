@@ -460,7 +460,11 @@ hr {
     font-size: 45px; }
     @media screen and (max-width: 520px) {
       .tile.tile-128 .tile-inner {
-        font-size: 25px; } }
+        font-size: 25px; } 
+        .loginImg{
+        width: 48px !important;
+    }
+    }
   .tile.tile-256 .tile-inner {
     color: #f9f6f2;
     background: #edcc61;
@@ -899,8 +903,23 @@ input {
 .created{
     font-size: 0.7rem;
 }
-@media screen and (min-width: 520px) and (max-width: 1050px) {
+@media screen and (min-width: 520px) and (max-width: 1150px) {
     .heading{
         margin-top: 50px;
     }
+}
+.timer{
+    font-size: 1.45rem;
+    float: left;
+    margin: 10px auto;
+}
+.loginImg{
+    width: 54px;
+    float: left;
+    position: relative;
+    top: -18px;
+    left: -18px;
+}
+strong{
+    font-weight: bold;
 }

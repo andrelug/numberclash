@@ -2,8 +2,20 @@ extends layout
 
 block content
     div.row
-        div.small-6.large-4.columns
-            img(src="#{user.photo}?type=large", style="height: 80px; width: 80px;")
+        div.small-6.large-6.columns
+            h1 Hello #{user.name.first}
+            h3 We are still building your profile. Soon you'll be able to see your friends score, check your game statistics and much more!
+            br
+            br
+            br
+            div.row
+                div.small-6.large-6.columns
+                    img.profileImg(src="#{user.photo}?type=large")
+                div.small-6.large-6.columns
+                    a(href="/") Play Game!
+                    br
+                    br
+                    a(href="/logout") Log Out
 
 
 
