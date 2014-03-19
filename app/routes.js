@@ -259,7 +259,7 @@ module.exports = function (app, passport, mongoose) {
         } else {
             Users.find({ deleted: false }, function (err, docs) {
                 sessionReload(req, res, next);
-                res.render('profile/index', { user: user });
+                res.render('profile/index', { message: req.flash('loginMessage'), user: user });
             });
         }
     });

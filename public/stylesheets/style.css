@@ -7,7 +7,9 @@ body,
 }
 body, html{
     background: url('../images/crossword.png') repeat;
-    margin-top: 40px;
+}
+body .row:first-child{
+    padding-top: 30px;
 }
 html {
   font-size: 62.5%;
@@ -25,4 +27,50 @@ input{
     width: 140px;
     box-shadow: 1px 1px 1px black;
     -webkit-box-shadow: 1px 1px 1px black;
+}
+li a {
+  margin-bottom: 1.5rem;
+  margin-right: 0rem;
+  width: 100%;
+  font-size: 21.44px;
+  font-size: 2.144rem;
+}
+.facebook {
+  background-color: #4764b3;
+}
+.twitter {
+  background-color: #00acee;
+}
+.google {
+  background-color: #d7554f;
+}
+#addpass{
+    background-color: #16a085;
+}
+ul li{
+    list-style: none;
+}
+li a{
+  text-align: center;
+  text-decoration: none;
+  height: auto;
+  color: #fff;
+  padding: 1rem;
+  opacity: 0.9;
+  display: block;
+  width: 50%;
+}
+li a:hover{
+  background-color: #7c8080;
+  color: white;
+}
+input[type="submit"]{
+  height: auto;
+  padding: 1rem;
+  opacity: 0.9;
+  width: 50%;
+  margin-bottom: 10px;
+}
+.addpass{
+    display: none;
 }

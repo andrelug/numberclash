@@ -8,14 +8,71 @@ block content
             br
             br
             br
-            div.row
-                div.small-6.large-6.columns
+            div.small-6.large-6.columns
+                if(user.photo)
                     img.profileImg(src="#{user.photo}")
-                div.small-6.large-6.columns
-                    a(href="/") Play Game!
-                    br
-                    br
-                    a(href="/logout") Log Out
+                else
+                    img.profileImg(src="images/avatar.png")
+            div.small-6.large-6.columns
+                a(href="/") Play Game!
+                br
+                br
+                a(href="/logout") Log Out
+
+
+        div.small-6.large-6.columns
+            h2 Accounts
+            ul
+                li
+                    h3 - Local
+                    if(!user.password.main)
+                        h3 It seems you logged with a social account! That's great, but how about defining a password for your local login as well?
+                        br
+                        br
+                        a#addpass Add Password
+                        div.addpass
+                            h2 Add local profile login info
+
+                            if(message.length > 0)
+                                div #{ message }
+
+                            form(method="post", action="/profile/edit")
+                            input(type="text", name="email", placeholder="email", value="#{user.email}")
+                            br
+                            input(type="password", name="password", placeholder="password")
+                            br
+                            input(type="submit", value="Adicionar senha")
+                    else
+                        h4 email (#{user.email})
+                        br
+
+                li                        
+                    h3 - Facebook
+                    if(user.social.facebook.token)
+                        h4 Connected
+                        br
+                        a(href="/unlink/facebook") Unlink
+                    else
+                        a.facebook(href="/connect/facebook") <i class="fa fa-facebook"></i> Facebook Connect
+
+                li
+                    h3 - Twitter
+                    if(user.social.twitter.token)
+                        h4 Connected
+                        br
+                        a(href="/unlink/twitter") Unlink
+                    else
+                        a.twitter(href="/connect/twitter") <i class="fa fa-twitter"></i> Twitter Connect
+
+                li
+                    h3 - Google
+                    if(user.social.google.token)
+                        h4 Connected
+                        br
+                        a(href="/unlink/google") Unlink
+                    else
+                        a.google(href="/connect/google") <i class="fa fa-google-plus"></i> Google Connect
+
 
 
 
