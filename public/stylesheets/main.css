@@ -610,7 +610,11 @@ hr {
   animation-fill-mode: backwards; }
 
 .game-intro {
-  margin-bottom: 0; }
+  margin-top: 20px;
+  margin-bottom: -10px; }
+.game-intro small{
+    font-size: 12pt;
+}
 
 .game-explanation {
   margin-top: 50px; }
@@ -914,7 +918,7 @@ input {
 .timer{
     font-size: 1.45rem;
     float: left;
-    margin: 10px auto;
+    margin: 20px auto 0;
 }
 .loginImg{
     height: 54px;

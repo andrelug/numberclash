@@ -1,6 +1,7 @@
 extends layout
 
 block content
+
     div.loginBar
         if(!user.id)
             div.login
@@ -60,6 +61,8 @@ block content
             div.scores-container
                 div.score-container 0
                 div.best-container 0
+        
+        p.game-intro Join the numbers to get to the <strong>2048 tile...<small>or more!</small></strong>
 
         div.game-container
             div.game-message
