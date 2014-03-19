@@ -983,7 +983,7 @@ strong{
 .tabs {
     position: relative;
     margin: 40px auto;
-    width: 240px;
+    width: 360px;
     display: none;
 }
 .clear-shadow{
@@ -1002,6 +1002,9 @@ strong{
 }
 .tabs input#tab-2{
     left: 120px;
+}
+.tabs input#tab-3{
+    left: 240px;
 }
 .tabs label {
     background: linear-gradient(top, #5ba4a4 0%,#4e8c8a 100%);
@@ -1035,6 +1038,9 @@ strong{
  
 .tab-label-2 {
     z-index: 3;
+}
+.tab-label-3 {
+    z-index: 2;
 }
 .tabs label:after {
     content: '';
@@ -1081,7 +1087,8 @@ strong{
     margin: 0;
 }
 .tabs input.tab-selector-1:checked ~ .tabcontent .content-1,
-.tabs input.tab-selector-2:checked ~ .tabcontent .content-2 {
+.tabs input.tab-selector-2:checked ~ .tabcontent .content-2,
+.tabs input.tab-selector-3:checked ~ .tabcontent .content-3 {
     z-index: 100;
     opacity: 1;
     transition: all ease-out 0.2s 0.1s;
@@ -1103,4 +1110,21 @@ table tr:nth-child(odd) {
     height: 25px;
     float: left;
     margin-right: 5px;
+}
+.facebookLog li{
+    list-style: none;
+}
+.facebookLog li a{
+    text-align: center;
+    text-decoration: none;
+    height: auto;
+    color: #fff;
+    padding: 1rem;
+    opacity: 0.9;
+    display: block;
+    margin-bottom: 1.5rem;
+    margin-right: 0rem;
+    font-size: 21.44px;
+    font-size: 2.144rem;
+    background-color:  #4764b3;
 }

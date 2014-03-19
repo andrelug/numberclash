@@ -1,6 +1,7 @@
 var Users = require('./models/user');
 var Anon = require('./models/anon');
 var func = require('../config/functions');
+var facebook = require('../config/facebook.js');
 
 // Session check function
 var sessionReload = function(req, res, next){
@@ -20,12 +21,19 @@ module.exports = function (app, passport, mongoose) {
     app.get('/', function (req, res, next) {
         var user = req.user;
         Anon.find({}, { score: 1, _id: 0 }).sort({ 'score': -1 }).limit(10).exec(function (err, docs) {
-            Users.find({}, {'scores.best':1, 'name.first': 1, 'photo': 1, _id: 0}).sort({'scores.best': -1}).limit(10).exec(function (err, udocs) {
+            Users.find({}, { 'scores.best': 1, 'name.first': 1, 'photo': 1, _id: 0 }).sort({ 'scores.best': -1 }).limit(10).exec(function (err, udocs) {
                 if (!user) {
                     res.render("index", { message: req.flash('signupMessage'), user: '', lead: docs, ulead: udocs });
                 } else {
+                    var userId = [];
+                    for (i = 0; i < user.social.facebook.friends.length; i++) {
+                        userId.push(user.social.facebook.friends[i].id);
+                    }
+                    
+                    Users.find({ 'social.facebook.id': { $in: userId} }, {'scores.best': 1, 'name.first': 1, 'photo': 1, _id: 0}).sort({ 'score': -1 }).limit(10).exec(function (err, friends) {
                     sessionReload(req, res, next);
-                    res.render('index', { user: user, lead: docs, ulead: udocs});
+                    res.render('index', { user: user, lead: docs, ulead: udocs, friends: friends });
+                    });
                 }
             });
         });
@@ -107,14 +115,13 @@ module.exports = function (app, passport, mongoose) {
     // FACEBOOK ROUTES =====================
     // =====================================
     // route for facebook authentication and login
-    app.get('/auth/facebook', passport.authenticate('facebook', { scope: ['email', 'user_about_me',
-    'user_birthday ', 'user_hometown', 'user_website']
+    app.get('/auth/facebook', passport.authenticate('facebook', { scope: ['email', 'user_friends']
     }));
 
     // handle the callback after facebook has authenticated the user
     app.get('/auth/facebook/callback',
 	    passport.authenticate('facebook', {
-	        successRedirect: '/',
+	        successRedirect: '/facebook',
 	        failureRedirect: '/'
 	    })
     );
@@ -262,6 +269,16 @@ module.exports = function (app, passport, mongoose) {
                 res.render('profile/index', { message: req.flash('loginMessage'), user: user });
             });
         }
+    });
+
+    app.get('/facebook', function (req, res) {
+        var user = req.user;
+        facebook.getFbData(user.social.facebook.token, '/me/friends', function (data) {
+            var friend = eval("(" + data + ")")
+            Users.update({ _id: user._id }, { $pushAll: { 'social.facebook.friends': friend.data} }, function (err) {
+                res.redirect('/');
+            });
+        });
     });
 
     function isLoggedIn(req, res, next) {

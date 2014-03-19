@@ -20,15 +20,41 @@ block content
         h2 Leaderboards
         section.tabs
             input#tab-1.tab-selector-1(type="radio", name="radio-set", checked="checked")
-            label.tab-label-1(for="tab-1") NC Users
+            label.tab-label-1(for="tab-1") Friends
 
             input#tab-2.tab-selector-2(type="radio", name="radio-set")
-            label.tab-label-2(for="tab-2") Global
+            label.tab-label-2(for="tab-2") NC Users
+
+            input#tab-3.tab-selector-3(type="radio", name="radio-set")
+            label.tab-label-3(for="tab-3") Global
 
             div.clear-shadow
 
             div.tabcontent
                 div.content-1
+                    if(friends)
+                        table
+                            tr
+                                td User
+                                td Score
+                            for friend in friends
+                                tr
+                                    td
+                                        if(friend.photo)
+                                            img.lphoto(src="#{friend.photo}")
+                                        p #{friend.name.first}
+
+                                    td #{friend.scores.best}
+                    else
+                        br
+                        h2 How about competing with your friends?!
+                        br
+                        ul.facebookLog
+                            li
+                                a.facebook(href="/auth/facebook") <i class="fa fa-facebook"></i> Facebook Login
+                div.content-2
+                    if(friends)
+                        #{friends}
                     table
                         tr
                             td User
@@ -43,7 +69,7 @@ block content
                                 td #{uleads.scores.best}
                     
 
-                div.content-2
+                div.content-3
                     table
                         tr
                             td User

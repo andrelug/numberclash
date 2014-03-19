@@ -223,11 +223,8 @@ module.exports = function (passport) {
                             newUser.name.last = profile.name.familyName;
                             newUser.email = profile.emails[0].value;
                             newUser.gender = profile.gender;
-                            newUser.bio = profile._json.bio;
-                            newUser.sites = profile._json.website;
-                            newUser.localization.city = profile._json.hometown.name;
                             newUser.name.parsed = func.string_to_slug(profile.name.givenName);
-                            newUser.photo = "http://graph.facebook.com/" + profile.username + "/picture?type=large"
+                            newUser.photo = "http://graph.facebook.com/" + profile.username + "/picture?type=large";
 
                             // save our user to the database
                             newUser.save(function (err) {
