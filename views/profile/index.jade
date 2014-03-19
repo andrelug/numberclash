@@ -37,11 +37,11 @@ block content
                                 div #{ message }
 
                             form(method="post", action="/profile/edit")
-                            input(type="text", name="email", placeholder="email", value="#{user.email}")
-                            br
-                            input(type="password", name="password", placeholder="password")
-                            br
-                            input(type="submit", value="Adicionar senha")
+                                input(type="text", name="email", placeholder="email", value="#{user.email}")
+                                br
+                                input(type="password", name="password", placeholder="password")
+                                br
+                                input.passwordbutton(type="submit", value="Adicionar senha")
                     else
                         h4 email (#{user.email})
                         br

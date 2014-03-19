@@ -28,13 +28,6 @@ input{
     box-shadow: 1px 1px 1px black;
     -webkit-box-shadow: 1px 1px 1px black;
 }
-li a {
-  margin-bottom: 1.5rem;
-  margin-right: 0rem;
-  width: 100%;
-  font-size: 21.44px;
-  font-size: 2.144rem;
-}
 .facebook {
   background-color: #4764b3;
 }
@@ -59,12 +52,17 @@ li a{
   opacity: 0.9;
   display: block;
   width: 50%;
+  margin-bottom: 1.5rem;
+  margin-right: 0rem;
+  font-size: 21.44px;
+  font-size: 2.144rem;
+  background-color: darksalmon;
 }
 li a:hover{
   background-color: #7c8080;
   color: white;
 }
-input[type="submit"]{
+.passwordbutton{
   height: auto;
   padding: 1rem;
   opacity: 0.9;
