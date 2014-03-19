@@ -30,7 +30,7 @@ module.exports = function (app, passport, mongoose) {
                         userId.push(user.social.facebook.friends[i].id);
                     }
                     
-                    Users.find({ 'social.facebook.id': { $in: userId} }, {'scores.best': 1, 'name.first': 1, 'photo': 1, _id: 0}).sort({ 'score': -1 }).limit(10).exec(function (err, friends) {
+                    Users.find({ 'social.facebook.id': { $in: userId} }, {'scores.best': 1, 'name.first': 1, 'photo': 1, _id: 0}).sort({ 'scores.best': -1 }).limit(10).exec(function (err, friends) {
                     sessionReload(req, res, next);
                     res.render('index', { user: user, lead: docs, ulead: udocs, friends: friends });
                     });
