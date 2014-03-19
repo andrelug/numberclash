@@ -77,3 +77,9 @@ function Stop(){
           $(".tog").toggle();
           clearTimeout(timerID);
           }
+
+/* leaderboards */
+
+    $('.leaderboard h2').on('click', function () {
+        $('.tabs').toggle(400);
+    });

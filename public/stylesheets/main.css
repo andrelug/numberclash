@@ -968,20 +968,23 @@ strong{
 }
 .leaderboard{
     position: absolute;
-    right: 3%;
-    top: 200px;
-    padding: 10px;
+    right: 2%;
+    top: 240px;
     background-color: white;
     box-shadow: 1px 1px 1px black;
 }
 .leaderboard h2{
     font-size: 1.7rem;
     text-align: center;
+    cursor: pointer;
+    padding: 10px;
+    display: block;
 }
 .tabs {
     position: relative;
     margin: 40px auto;
     width: 240px;
+    display: none;
 }
 .clear-shadow{
     clear: both;

@@ -29,17 +29,6 @@ block content
 
             div.tabcontent
                 div.content-1
-
-                    table
-                        tr
-                            td User
-                            td Score
-                        for leads in lead
-                            tr
-                                td: p Anonymous
-                                td #{leads.score}
-
-                div.content-2
                     table
                         tr
                             td User
@@ -52,6 +41,17 @@ block content
                                     p #{uleads.name.first}
 
                                 td #{uleads.scores.best}
+                    
+
+                div.content-2
+                    table
+                        tr
+                            td User
+                            td Score
+                        for leads in lead
+                            tr
+                                td: p Anonymous
+                                td #{leads.score}
 
     div.container
         div.heading
