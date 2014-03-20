@@ -18,7 +18,7 @@ var UserSchema = new mongoose.Schema({
     bio: String,
     photo: String,
     password: {
-        main: {type: String, default: "12345"},
+        main: String,
         past: {
             past1: String,
             past2: String

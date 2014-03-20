@@ -29,7 +29,7 @@ block content
                     h3 It seems you logged with a social account! That's great, but how about defining a password for your local login as well?
                     br
                     br
-                    if(user.password.main === "12345")
+                    if(!user.password.main)
                         a#addpass Add Password
                     else
                         a#addpass Change Password
@@ -45,37 +45,37 @@ block content
                             br
                             input(type="password", name="password", placeholder="password")
                             br
-                            input.passwordbutton(type="submit", value="Adicionar senha")
+                            input.passwordbutton(type="submit", value="Submit New Password")
 
                     h4 email (#{user.email})
                     br
 
-            li                        
-                h3 - Facebook
-                if(user.social.facebook.token)
-                    h4 Connected
-                    br
-                    a(href="/unlink/facebook") Unlink
-                else
-                    a.facebook(href="/connect/facebook") <i class="fa fa-facebook"></i> Facebook Connect
+                li                        
+                    h3 - Facebook
+                    if(user.social.facebook.token)
+                        h4 Connected
+                        br
+                        a(href="/unlink/facebook") Unlink
+                    else
+                        a.facebook(href="/connect/facebook") <i class="fa fa-facebook"></i> Facebook Connect
 
-            li
-                h3 - Twitter
-                if(user.social.twitter.token)
-                    h4 Connected
-                    br
-                    a(href="/unlink/twitter") Unlink
-                else
-                    a.twitter(href="/connect/twitter") <i class="fa fa-twitter"></i> Twitter Connect
+                li
+                    h3 - Twitter
+                    if(user.social.twitter.token)
+                        h4 Connected
+                        br
+                        a(href="/unlink/twitter") Unlink
+                    else
+                        a.twitter(href="/connect/twitter") <i class="fa fa-twitter"></i> Twitter Connect
 
-            li
-                h3 - Google
-                if(user.social.google.token)
-                    h4 Connected
-                    br
-                    a(href="/unlink/google") Unlink
-                else
-                    a.google(href="/connect/google") <i class="fa fa-google-plus"></i> Google Connect
+                li
+                    h3 - Google
+                    if(user.social.google.token)
+                        h4 Connected
+                        br
+                        a(href="/unlink/google") Unlink
+                    else
+                        a.google(href="/connect/google") <i class="fa fa-google-plus"></i> Google Connect
 
 
 
