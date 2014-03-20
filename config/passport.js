@@ -220,7 +220,7 @@ module.exports = function (passport) {
                                 throw err;
 
                             // Verify the uniqueness of the loginName and tries to give the original that came from the social network
-                            if (login.length == 0) {
+                            if (login.length === 0) {
                                 newUser.name.loginName = profile.username;
                             } else {
                                 newUser.name.loginName = func.randomString();
