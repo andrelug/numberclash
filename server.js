@@ -30,6 +30,7 @@ app.configure(function(){
   app.use(flash()); // use connect-flash for flash messages stored in session
   app.use(app.router);
   app.use(express.static(path.join(__dirname, 'public')));
+  app.enable('trust proxy');
 });
 
 app.configure('development', function(){

@@ -2,6 +2,7 @@ var Users = require('./models/user');
 var Anon = require('./models/anon');
 var func = require('../config/functions');
 var facebook = require('../config/facebook.js');
+var ip = require('ip');
 
 // Session check function
 var sessionReload = function(req, res, next){
@@ -29,10 +30,10 @@ module.exports = function (app, passport, mongoose) {
                     for (i = 0; i < user.social.facebook.friends.length; i++) {
                         userId.push(user.social.facebook.friends[i].id);
                     }
-                    
-                    Users.find({ 'social.facebook.id': { $in: userId} }, {'scores.best': 1, 'name.first': 1, 'photo': 1, _id: 0}).sort({ 'scores.best': -1 }).limit(10).exec(function (err, friends) {
-                    sessionReload(req, res, next);
-                    res.render('index', { user: user, lead: docs, ulead: udocs, friends: friends });
+
+                    Users.find({ 'social.facebook.id': { $in: userId} }, { 'scores.best': 1, 'name.first': 1, 'photo': 1, _id: 0 }).sort({ 'scores.best': -1 }).limit(10).exec(function (err, friends) {
+                        sessionReload(req, res, next);
+                        res.render('index', { user: user, lead: docs, ulead: udocs, friends: friends });
                     });
                 }
             });
@@ -47,11 +48,16 @@ module.exports = function (app, passport, mongoose) {
         var won = req.body.win;
 
         if (!req.user) {
+            var ipN = req.ip;
+            //var ipN = ip.address();
+            var longi = ip.toLong(ipN);
+
             new Anon({
                 score: score,
                 date: date,
                 time: time,
-                won: won
+                won: won,
+                ip: longi
             }).save(function (err, docs) {
                 if (err) res.json(err);
                 res.end();
