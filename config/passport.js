@@ -336,7 +336,7 @@ module.exports = function (passport) {
                             newUser.social.twitter.displayName = profile.displayName;
                             newUser.social.twitter.username = profile.username;
                             // basic profile
-                            newUser.email = "Needed";
+                            newUser.email = "Needed" + profile.username;
                             newUser.name.first = profile.displayName;
                             newUser.photo = profile.photos[0].value.replace('_normal', '');
                             newUser.localization.city = profile._json.location;
