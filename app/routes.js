@@ -73,14 +73,27 @@ module.exports = function (app, passport, mongoose) {
             });
         } else {
             var user = req.user;
-            Users.update({ 'name.loginName': user.name.loginName },
-            { $set: { 'scores.best': best },
-                $push: { 'scores.history': { score: score, date: date, time: time, won: won} }
-            },
-            function (err) {
-                if (err) throw err;
-                res.end();
-            })
+
+            if (user.scores.best < best) {
+                Users.update({ 'name.loginName': user.name.loginName },
+                { $set: { 'scores.best': best },
+                    $push: { 'scores.history': { score: score, date: date, time: time, won: won} }
+                },
+                function (err) {
+                    if (err) throw err;
+                    res.end();
+                });
+            } else {
+                Users.update({ 'name.loginName': user.name.loginName },
+                { $push: { 'scores.history': { score: score, date: date, time: time, won: won} }
+                },
+                function (err) {
+                    if (err) throw err;
+                    res.end();
+                });
+            }
+
+
         }
 
     });
@@ -315,7 +328,7 @@ module.exports = function (app, passport, mongoose) {
     // =====================================
     app.get('/users/restore', function (req, res) {
         user = req.user;
-        res.render('profile/restore', {user: user});
+        res.render('profile/restore', { user: user });
     });
 
     app.put('/users/restore', function (req, res) {
