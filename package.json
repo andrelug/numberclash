@@ -27,7 +27,8 @@
     "connect-flash": "*",
     "bcrypt-nodejs": "*",
     "newrelic": "*",
-    "ip": "*"
+    "ip": "*",
+    "connect-mongo": "*"
   },
   "noAnalyze": true,
   "license": "Apache",
