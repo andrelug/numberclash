@@ -1,0 +1,21 @@
+extends layout
+
+block content
+    div.row
+        div.small-6.large-6.columns
+            h1 Hello #{user.name.first}
+            h3 Welcome Back!
+            br
+            br
+            br
+            div.small-6.large-6.columns
+                if(user.photo)
+                    img.profileImg(src="#{user.photo}")
+                else
+                    img.profileImg(src="images/avatar.png")
+            div.small-6.large-6.columns
+                h3 If you want to restore your account, please click the button:
+                form(method="post", action="/users/restore")
+                    input(type="hidden", name="_method", value="put")
+                    br
+                    button.expand(type="submit") Restore

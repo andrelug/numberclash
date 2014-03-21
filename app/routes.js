@@ -27,16 +27,20 @@ module.exports = function (app, passport, mongoose) {
                 if (!user) {
                     res.render("index", { message: req.flash('signupMessage'), user: '', lead: docs, ulead: udocs });
                 } else {
-                    var userId = [];
-                    for (i = 0; i < user.social.facebook.friends.length; i++) {
-                        userId.push(user.social.facebook.friends[i].id);
-                    }
+                    if (user.deleted === false) {
+                        var userId = [];
+                        for (i = 0; i < user.social.facebook.friends.length; i++) {
+                            userId.push(user.social.facebook.friends[i].id);
+                        }
 
-                    Users.find({ 'social.facebook.id': { $in: userId} }, { 'scores.best': 1, 'name.first': 1, 'photo': 1, _id: 0 }).sort({ 'scores.best': -1 }).limit(10).exec(function (err, friends) {
-                        req.session.name = req.user.name.loginName;
-                        sessionReload(req, res, next);
-                        res.render('index', { user: user, lead: docs, ulead: udocs, friends: friends });
-                    });
+                        Users.find({ 'social.facebook.id': { $in: userId} }, { 'scores.best': 1, 'name.first': 1, 'photo': 1, _id: 0 }).sort({ 'scores.best': -1 }).limit(10).exec(function (err, friends) {
+                            req.session.name = req.user.name.loginName;
+                            sessionReload(req, res, next);
+                            res.render('index', { user: user, lead: docs, ulead: udocs, friends: friends });
+                        });
+                    } else {
+                        res.redirect('/users/restore');
+                    }
                 }
             });
         });
@@ -275,10 +279,8 @@ module.exports = function (app, passport, mongoose) {
         if (!user) {
             res.redirect("signup");
         } else {
-            Users.find({ deleted: false }, function (err, docs) {
-                sessionReload(req, res, next);
-                res.render('profile/index', { message: req.flash('loginMessage'), user: user });
-            });
+            sessionReload(req, res, next);
+            res.render('profile/index', { message: req.flash('loginMessage'), user: user });
         }
     });
 
@@ -290,6 +292,43 @@ module.exports = function (app, passport, mongoose) {
                 res.redirect('/');
             });
         });
+    });
+
+    // =====================================
+    // DELETE USER =========================
+    // =====================================
+    app.put('/users/delete', function (req, res) {
+        Users.update(
+            { 'name.loginName': req.user.name.loginName },
+            { $set: {
+                deleted: true
+            }
+            },
+            function (err) {
+                res.redirect('/logout')
+            }
+        );
+    });
+
+    // =====================================
+    // RESTORE USER ========================
+    // =====================================
+    app.get('/users/restore', function (req, res) {
+        user = req.user;
+        res.render('profile/restore', {user: user});
+    });
+
+    app.put('/users/restore', function (req, res) {
+        Users.update(
+            { 'name.loginName': req.user.name.loginName },
+            { $set: {
+                deleted: false
+            }
+            },
+            function (err) {
+                res.redirect('/profile')
+            }
+        );
     });
 
     function isLoggedIn(req, res, next) {

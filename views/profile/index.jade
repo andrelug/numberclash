@@ -14,10 +14,16 @@ block content
                 else
                     img.profileImg(src="images/avatar.png")
             div.small-6.large-6.columns
-                a(href="/") Play Game!
+                a.button.expand(href="/") Play Game!
                 br
                 br
-                a(href="/logout") Log Out
+                a.button.expand(href="/logout") Log Out
+                br
+                br
+                br
+                form(method="post", action="/users/delete")
+                    input(type="hidden", name="_method", value="put")
+                    button.alert(type="submit") Delete Account
 
 
         div.small-6.large-6.columns
