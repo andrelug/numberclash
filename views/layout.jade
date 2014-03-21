@@ -17,7 +17,7 @@ html(lang="en")
         meta(name="twitter:title", content="A better, more social and engaging 2048 game!")
         meta(name="twitter:description", content="A better, more social and engaging 2048 game!")
         meta(name="twitter:image", content="http://www.numbersclash.com/images/numbersclash.jpg")
-        link(rel='stylesheet', href='/stylesheets/main.css')
+        link(rel='stylesheet', href='/stylesheets/mini.css')
         link(rel="shortcut icon", href="meta/apple-touch-icon.png")
         meta(name="apple-mobile-web-app-capable", content="yes")
         meta(name="HandheldFriendly", content="yes")
@@ -28,14 +28,8 @@ html(lang="en")
         block content
 
         script(src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js")
-        script(src="javascripts/animframe_polyfill.js")
-        script(src="javascripts/keyboard_input_manager.js")
-        script(src="javascripts/html_actuator.js")
-        script(src="javascripts/grid.js")
-        script(src="javascripts/tile.js")
-        script(src="javascripts/local_score_manager.js")
-        script(src="javascripts/game_manager.js")
-        script(src="javascripts/application.js")
+        script(src="javascripts/app.js")
+
         script.
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
