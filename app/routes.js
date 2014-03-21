@@ -12,7 +12,7 @@ var sessionReload = function(req, res, next){
         req.session._garbage = Date();
         req.session.touch();
     }
-} 
+}
 
 module.exports = function (app, passport, mongoose) {
 
@@ -20,7 +20,7 @@ module.exports = function (app, passport, mongoose) {
     // HOME PAGE (with login links) ========
     // =====================================
     app.get('/', function (req, res, next) {
-        
+
         var user = req.user;
         Anon.find({}, { score: 1, _id: 0 }).sort({ 'score': -1 }).limit(10).exec(function (err, docs) {
             Users.find({}, { 'scores.best': 1, 'name.first': 1, 'photo': 1, _id: 0 }).sort({ 'scores.best': -1 }).limit(10).exec(function (err, udocs) {
@@ -48,10 +48,11 @@ module.exports = function (app, passport, mongoose) {
         var date = new Date();
         var time = req.body.time;
         var won = req.body.win;
+        var sessionId = req.sessionID;
 
         if (!req.user) {
-            var ipN = req.ip;
-            //var ipN = ip.address();
+            //var ipN = req.ip;
+            var ipN = ip.address();
             var longi = ip.toLong(ipN);
 
             new Anon({
@@ -59,7 +60,9 @@ module.exports = function (app, passport, mongoose) {
                 date: date,
                 time: time,
                 won: won,
-                ip: longi
+                ip: longi,
+                sessionId: sessionId
+
             }).save(function (err, docs) {
                 if (err) res.json(err);
                 res.end();

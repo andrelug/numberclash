@@ -6,7 +6,8 @@ var AnonSchema = new mongoose.Schema({
     date: Date,
     time: [Number],
     won: Boolean,
-    ip: Number
+    ip: Number,
+    sessionId: String
 });
 
 // create the model for users and expose it to app // Users var
