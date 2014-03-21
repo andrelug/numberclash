@@ -9,6 +9,8 @@ block content
                 ul
                     li: a.loginUser(href="/login", alt="login") Login
                     li: a.signup(href="/signup", alt="signup") Signup
+            div.loginFace
+                a.facebook(href="/auth/facebook") <i class="fa fa-facebook"></i> with Facebook
         else
             div.logged
                 ul
@@ -18,8 +20,7 @@ block content
                             |#{user.name.first}
                     li: a(href="/logout") Log Out
 
-        div.loginFace
-            a.facebook(href="/auth/facebook") <i class="fa fa-facebook"></i> with Facebook
+        
     div.leaderboard
         h2 Leaderboards
         section.tabs
