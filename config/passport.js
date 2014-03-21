@@ -147,9 +147,6 @@ module.exports = function (passport) {
             // if there are any errors, return the error before anything else
             if (err)
                 return done(err);
-
-            if (!user.password.main)
-                return done(null, false, req.flash('loginMessage', 'You didn\'t set your password yet. Pleas login with your social account.'));
             
             // if no user is found, return the message
             if (!user)
@@ -159,7 +156,8 @@ module.exports = function (passport) {
             if (!user.validPassword(password))
                 return done(null, false, req.flash('loginMessage', 'Oops! Wrong password.')); // create the loginMessage and save it to session as flashdata
 
-            
+            if (!user.password.main)
+                return done(null, false, req.flash('loginMessage', 'You didn\'t set your password yet. Pleas login with your social account.'));
 
             // all is well, return successful user
             return done(null, user);
