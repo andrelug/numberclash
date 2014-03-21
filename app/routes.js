@@ -20,6 +20,7 @@ module.exports = function (app, passport, mongoose) {
     // HOME PAGE (with login links) ========
     // =====================================
     app.get('/', function (req, res, next) {
+        
         var user = req.user;
         Anon.find({}, { score: 1, _id: 0 }).sort({ 'score': -1 }).limit(10).exec(function (err, docs) {
             Users.find({}, { 'scores.best': 1, 'name.first': 1, 'photo': 1, _id: 0 }).sort({ 'scores.best': -1 }).limit(10).exec(function (err, udocs) {
@@ -32,7 +33,8 @@ module.exports = function (app, passport, mongoose) {
                     }
 
                     Users.find({ 'social.facebook.id': { $in: userId} }, { 'scores.best': 1, 'name.first': 1, 'photo': 1, _id: 0 }).sort({ 'scores.best': -1 }).limit(10).exec(function (err, friends) {
-                       // sessionReload(req, res, next);
+                        req.session.name = req.user.name.first;
+                        // sessionReload(req, res, next);
                         res.render('index', { user: user, lead: docs, ulead: udocs, friends: friends });
                     });
                 }
