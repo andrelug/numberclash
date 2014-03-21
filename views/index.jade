@@ -17,6 +17,9 @@ block content
                             img.loginImg(src="#{user.photo}")
                             |#{user.name.first}
                     li: a(href="/logout") Log Out
+
+        div.loginFace
+            a.facebook(href="/auth/facebook") <i class="fa fa-facebook"></i> with Facebook
     div.leaderboard
         h2 Leaderboards
         section.tabs
