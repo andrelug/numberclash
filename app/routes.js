@@ -5,14 +5,14 @@ var facebook = require('../config/facebook.js');
 var ip = require('ip');
 
 // Session check function
-var sessionReload = function(req, res, next){
+/* var sessionReload = function(req, res, next){
     if('HEAD' == req.method || 'OPTIONS' == req.method){
         return next();
     }else{
         req.session._garbage = Date();
         req.session.touch();
     }
-}
+} */
 
 module.exports = function (app, passport, mongoose) {
 
@@ -32,7 +32,7 @@ module.exports = function (app, passport, mongoose) {
                     }
 
                     Users.find({ 'social.facebook.id': { $in: userId} }, { 'scores.best': 1, 'name.first': 1, 'photo': 1, _id: 0 }).sort({ 'scores.best': -1 }).limit(10).exec(function (err, friends) {
-                        sessionReload(req, res, next);
+                       // sessionReload(req, res, next);
                         res.render('index', { user: user, lead: docs, ulead: udocs, friends: friends });
                     });
                 }
