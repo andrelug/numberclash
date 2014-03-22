@@ -302,8 +302,7 @@ hr {
       line-height: 60px;
       margin-top: 222px; }
     .game-container .game-message .lower {
-      display: block;
-      margin-top: 59px; }
+      display: block; }
     .game-container .game-message a {
       display: inline-block;
       background: #8f7a66;

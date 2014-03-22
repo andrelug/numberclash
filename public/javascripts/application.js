@@ -129,5 +129,5 @@ $('.facebookLog a').on('click', function () {
 });
 
 $('.signupList a').on('click', function () {
-    ga('send', 'event', 'register', 'click', 'topBarFace', 1, { 'nonInteraction': 1 });
+    ga('send', 'event', 'register', 'click', 'signupPage', 1, { 'nonInteraction': 1 });
 });

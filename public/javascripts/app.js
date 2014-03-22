@@ -22,20 +22,4 @@ GameManager.prototype.tileMatchesAvailable=function(){for(var a,b=0;b<this.size;
 function chrono(){end=new Date;diff=end-start;diff=new Date(diff);var a=diff.getMilliseconds(),b=diff.getSeconds(),c=diff.getMinutes(),d=diff.getHours()-diff.getHours();10>a?a="00"+a:100>a&&(a="0"+a);10>b&&(b="0"+b);10>c&&(c="0"+c);10>d&&(d="0"+d);$("#timer").html(d+" : "+c+" : "+b+" : "+a)}function Start(){$(".tog").toggle();reset?start=new Date:(start=new Date-diff,start=new Date(start));timerID=setInterval(chrono,10)}
 function Reset(){$("#timer").html("00 : 00 : 00 <em>000</em>");start=new Date;reset=!0}function Stop(){$(".tog").toggle();clearTimeout(timerID)}$(".leaderboard h2").on("click",function(){$(".tabs").toggle(400)});$("#facebookShare").on("click",function(){ga("send","event","share","click","facebook",1,{nonInteraction:1})});$("#twitterShare").on("click",function(){ga("send","event","share","click","twitter",1,{nonInteraction:1})});
 $("#googleShare").on("click",function(){ga("send","event","share","click","google",1,{nonInteraction:1})});window.onbeforeunload=sendView;function sendView(){ga("send","pageview","/exit")}$(".keep-playing-button").on("click",function(){ga("send","event","game","click","continue",1,{nonInteraction:1})});$(".retry-button").on("click",function(){ga("send","event","game","click","retry",1,{nonInteraction:1});ga("send","pageview","/retry")});
-$('.loginBar').hover(function(){$('.loginFace').animate({'top': 54});});$('.loginBar').on('mouseleave', function(){$('.loginFace').animate({'top':0})});
-$('.onoffswitch-label').on('click',function(){
-    $("#timer").toggle(500);
-    ga('send', 'event', 'game', 'switch', 'OnOff', 1, {'nonInteraction': 1});
-});
-
-$('.loginFace a').on('click', function () {
-    ga('send', 'event', 'register', 'click', 'topBarFace', 1, {'nonInteraction': 1});
-});
-
-$('.facebookLog a').on('click', function () {
-    ga('send', 'event', 'register', 'click', 'LeaderboardFace', 1, { 'nonInteraction': 1 });
-});
-
-$('.signupList a').on('click', function () {
-    ga('send', 'event', 'register', 'click', 'signupPage', 1, { 'nonInteraction': 1 });
-});
+$('.loginBar').hover(function(){$('.loginFace').animate({'top': 54});});$('.loginBar').on('mouseleave', function(){$('.loginFace').animate({'top':0})});$('.onoffswitch-label').on('click',function(){$("#timer").toggle(500);ga('send', 'event','game', 'switch', 'OnOff', 1, {'nonInteraction': 1});});$('.loginFace a').on('click', function () {ga('send', 'event','register', 'click', 'topBarFace', 1, {'nonInteraction': 1});});$('.facebookLog a').on('click', function () {ga('send','event', 'register', 'click', 'LeaderboardFace', 1, { 'nonInteraction': 1 });});$('.signupList a').on('click', function () {ga('send', 'event', 'register', 'click', 'signupPage', 1, { 'nonInteraction': 1 });});
