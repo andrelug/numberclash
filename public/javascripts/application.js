@@ -119,3 +119,15 @@ $('.onoffswitch-label').on('click',function(){
     $("#timer").toggle(500);
     ga('send', 'event', 'game', 'switch', 'OnOff', 1, {'nonInteraction': 1});
 });
+
+$('.loginFace a').on('click', function () {
+    ga('send', 'event', 'register', 'click', 'topBarFace', 1, {'nonInteraction': 1});
+});
+
+$('.facebookLog a').on('click', function () {
+    ga('send', 'event', 'register', 'click', 'LeaderboardFace', 1, { 'nonInteraction': 1 });
+});
+
+$('.signupList a').on('click', function () {
+    ga('send', 'event', 'register', 'click', 'topBarFace', 1, { 'nonInteraction': 1 });
+});
