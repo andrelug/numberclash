@@ -2,7 +2,7 @@ extends layout
 
 block content
     div.row
-        div.small-6.large-6.columns
+        div.small-12.large-6.columns
             h1 Hello #{user.name.first}
             h3 We are still building your profile. Soon you'll be able to see your friends score, check your game statistics and much more!
             br
@@ -25,8 +25,27 @@ block content
                     input(type="hidden", name="_method", value="put")
                     button.alert(type="submit") Delete Account
 
+            div.row
+                div.small-6.large-6.columns
+                    h2 Configurations
+                    br
+                    div.row
+                        div.small-6.large-6.columns
+                            h3(style="margin-top:10px;") Timer
+                        div.small-6.large-6.columns
+                            img.check(src="images/check.png")
+                            div.onoffswitch
+                                if(user.onOffSwitch === true)
+                                    input.onoffswitch-checkbox#myonoffswitch(type="checkbox", name="onoffswitch", checked="checked")
+                                else
+                                    input.onoffswitch-checkbox#myonoffswitch(type="checkbox", name="onoffswitch")
 
-        div.small-6.large-6.columns
+                                label.onoffswitch-label(for="myonoffswitch")
+                                    div.onoffswitch-inner
+                                    div.onoffswitch-switch
+
+
+        div.small-12.large-6.columns
             h2 Accounts
             ul
                 li

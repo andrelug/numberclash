@@ -16,7 +16,10 @@ block content
                 ul
                     li 
                         a(href="/profile")
-                            img.loginImg(src="#{user.photo}")
+                            if(user.photo)
+                                img.loginImg(src="#{user.photo}")
+                            else
+                                img.loginImg(src="images/avatar.png")
                             |#{user.name.first}
                     li: a(href="/logout") Log Out
 
@@ -47,6 +50,9 @@ block content
                                     td
                                         if(friend.photo)
                                             img.lphoto(src="#{friend.photo}")
+                                        else
+                                            img.lphoto(src="images/avatar.png")
+
                                         p #{friend.name.first}
 
                                     td #{friend.scores.best}
@@ -67,6 +73,9 @@ block content
                                 td
                                     if(uleads.photo)
                                         img.lphoto(src="#{uleads.photo}")
+                                    else
+                                        img.lphoto(src="images/avatar.png")
+
                                     p #{uleads.name.first}
 
                                 td #{uleads.scores.best}
@@ -85,13 +94,15 @@ block content
     div.container
         div.heading
             h1.title NumbersClash
-            div.timer
-                span#timer 00 : 00 : 00 : 000
-                div.onoffswitch
-                    input.onoffswitch-checkbox#myonoffswitch(type="checkbox", name="onoffswitch", checked="checked")
-                    label.onoffswitch-label(for="myonoffswitch")
-                        div.onoffswitch-inner
-                        div.onoffswitch-switch
+            if(user)
+                if(user.onOffSwitch === true)
+                    div.timer
+                        span#timer 00 : 00 : 00 : 000
+                        div.onoffswitch
+                            input.onoffswitch-checkbox#myonoffswitch(type="checkbox", name="onoffswitch", checked="checked")
+                            label.onoffswitch-label(for="myonoffswitch")
+                                div.onoffswitch-inner
+                                div.onoffswitch-switch
 
             div.scores-container
                 div.score-container 0

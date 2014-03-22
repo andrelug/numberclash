@@ -58,7 +58,8 @@ var UserSchema = new mongoose.Schema({
             url: String
         }
     },
-    deleted: {type: Boolean, default: false}
+    deleted: {type: Boolean, default: false},
+    onOffSwitch: {type: Boolean, default: true}
 });
 
 // methods ======================

@@ -74,7 +74,7 @@ module.exports = function (app, passport, mongoose) {
         } else {
             var user = req.user;
 
-            if(best === score){
+            if (best === score) {
 
                 if (user.scores.best < best) {
                     Users.update({ 'name.loginName': user.name.loginName },
@@ -355,6 +355,28 @@ module.exports = function (app, passport, mongoose) {
                 res.redirect('/profile')
             }
         );
+    });
+
+
+    // =====================================
+    // CONFIGURATIONS ======================
+    // =====================================
+
+    // On Off Switch
+    app.put('/users/onoff', function (req, res) {
+        user = req.user;
+        state = req.body.state;
+
+        Users.update(
+            { 'name.loginName': user.name.loginName },
+            { $set: {
+                onOffSwitch: state
+            }
+            },
+            function (err) {
+                res.send('done');
+            }
+        )
     });
 
     function isLoggedIn(req, res, next) {
