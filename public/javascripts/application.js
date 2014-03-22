@@ -115,6 +115,7 @@ function Stop(){
         ga('send', 'pageview', '/retry');
     });
     $('.loginBar').hover(function(){$('.loginFace').animate({'top': 54});});$('.loginBar').on('mouseleave', function(){$('.loginFace').animate({'top':0})});
-    $('.onoffswitch-label').on('click',function(){
+$('.onoffswitch-label').on('click',function(){
     $("#timer").toggle(500);
+    ga('send', 'event', 'game', 'switch', 'OnOff', 1, {'nonInteraction': 1});
 });

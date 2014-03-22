@@ -25,4 +25,5 @@ $("#googleShare").on("click",function(){ga("send","event","share","click","googl
 $('.loginBar').hover(function(){$('.loginFace').animate({'top': 54});});$('.loginBar').on('mouseleave', function(){$('.loginFace').animate({'top':0})});
 $('.onoffswitch-label').on('click',function(){
     $("#timer").toggle(500);
+    ga('send', 'event', 'game', 'switch', 'OnOff', 1, {'nonInteraction': 1});
 });
