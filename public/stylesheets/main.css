@@ -951,16 +951,25 @@ strong{
         right: 20% !important;
     }
 }
-@media screen and (max-width: 680px){
-    .leaderboard{
+@media screen and (min-width: 520px) and (max-width: 680px) {
+    .leaderboard {
         position: absolute;
         top: 1300px !important;
         right: 20% !important;
     }
-    .ad{
-    display: none;
+
+    .ad {
+        display: none;
+    }
 }
+@media screen and (max-width: 520px){
+    .leaderboard{
+        position: absolute;
+        top: 1140px !important;
+        right: 15% !important;
+    }
 }
+
 .leaderboard{
     position: absolute;
     right: 2%;
@@ -1190,11 +1199,16 @@ table tr:nth-child(odd) {
         font-size: 25px; } 
         .loginImg{
         width: 48px !important;
+        height: 48px !important;
     }
     .onoffswitch {
         position: absolute; width: 82px;
         -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+        top: 145px;left:65px;
     }
+.loginFace{width: 148px;}
+.loginFace a{height: 30px !important;}
+
     
 .onoffswitch-checkbox {
     display: none;
