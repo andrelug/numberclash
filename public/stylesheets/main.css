@@ -458,14 +458,7 @@ hr {
     background: #edcf72;
     box-shadow: 0 0 30px 10px rgba(243, 215, 116, 0.2381), inset 0 0 0 1px rgba(255, 255, 255, 0.14286);
     font-size: 45px; }
-    @media screen and (max-width: 520px) {
-        .share-bubble{display: none;}.game-message iframe{display: none}
-      .tile.tile-128 .tile-inner {
-        font-size: 25px; } 
-        .loginImg{
-        width: 48px !important;
-    }
-    }
+    
   .tile.tile-256 .tile-inner {
     color: #f9f6f2;
     background: #edcc61;
@@ -1144,3 +1137,99 @@ table tr:nth-child(odd) {
     position: relative;
     height: 39px;
 }
+.onoffswitch {
+    position: relative; width: 111px;
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+}
+.onoffswitch-checkbox {
+    display: none;
+}
+.onoffswitch-label {
+    display: block; overflow: hidden; cursor: pointer;
+    border: 2px solid #FFFFFF; border-radius: 7px;
+}
+.onoffswitch-inner {
+    width: 200%; margin-left: -100%;
+    -moz-transition: margin 0.3s ease-in 0s; -webkit-transition: margin 0.3s ease-in 0s;
+    -o-transition: margin 0.3s ease-in 0s; transition: margin 0.3s ease-in 0s;
+}
+.onoffswitch-inner:before, .onoffswitch-inner:after {
+    float: left; width: 50%; height: 36px; padding: 0; line-height: 36px;
+    font-size: 23px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+    -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+}
+.onoffswitch-inner:before {
+    content: "ON";
+    padding-left: 14px;
+    background-color: #EEEEEE; color: #2FCCFF;
+}
+.onoffswitch-inner:after {
+    content: "OFF";
+    padding-right: 14px;
+    background-color: #EEEEEE; color: #999999;
+    text-align: right;
+}
+.onoffswitch-switch {
+    width: 35px; margin: 0.5px;
+    background: #A1A1A1;
+    border: 2px solid #FFFFFF; border-radius: 7px;
+    position: absolute; top: 0; bottom: 0; right: 71px;
+    -moz-transition: all 0.3s ease-in 0s; -webkit-transition: all 0.3s ease-in 0s;
+    -o-transition: all 0.3s ease-in 0s; transition: all 0.3s ease-in 0s; 
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+    margin-left: 0;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+    right: 0px; 
+    background-color: #2FCCFF; 
+}
+@media screen and (max-width: 520px) {
+        .share-bubble{display: none;}.game-message iframe{display: none}
+      .tile.tile-128 .tile-inner {
+        font-size: 25px; } 
+        .loginImg{
+        width: 48px !important;
+    }
+    .onoffswitch {
+        position: absolute; width: 82px;
+        -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+    }
+    
+.onoffswitch-checkbox {
+    display: none;
+}
+.onoffswitch-label {
+    display: block; overflow: hidden; cursor: pointer;
+    border: 2px solid #FFFFFF; border-radius: 7px;
+}
+.onoffswitch-inner {
+    width: 200%; margin-left: -100%;
+    -moz-transition: margin 0.3s ease-in 0s; -webkit-transition: margin 0.3s ease-in 0s;
+    -o-transition: margin 0.3s ease-in 0s; transition: margin 0.3s ease-in 0s;
+}
+.onoffswitch-inner:before, .onoffswitch-inner:after {
+    float: left; width: 50%; height: 25px; padding: 0; line-height: 25px;
+    font-size: 15px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+    -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+}
+.onoffswitch-inner:before {
+    content: "ON";
+    padding-left: 14px;
+    background-color: #EEEEEE; color: #2FCCFF;
+}
+.onoffswitch-inner:after {
+    content: "OFF";
+    padding-right: 14px;
+    background-color: #EEEEEE; color: #999999;
+    text-align: right;
+}
+.onoffswitch-switch {
+    width: 25px; margin: 0px;
+    background: #A1A1A1;
+    border: 2px solid #FFFFFF; border-radius: 7px;
+    position: absolute; top: 0; bottom: 0; right: 53px;
+    -moz-transition: all 0.3s ease-in 0s; -webkit-transition: all 0.3s ease-in 0s;
+    -o-transition: all 0.3s ease-in 0s; transition: all 0.3s ease-in 0s; 
+}
+    }

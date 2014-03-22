@@ -23,3 +23,6 @@ function chrono(){end=new Date;diff=end-start;diff=new Date(diff);var a=diff.get
 function Reset(){$("#timer").html("00 : 00 : 00 <em>000</em>");start=new Date;reset=!0}function Stop(){$(".tog").toggle();clearTimeout(timerID)}$(".leaderboard h2").on("click",function(){$(".tabs").toggle(400)});$("#facebookShare").on("click",function(){ga("send","event","share","click","facebook",1,{nonInteraction:1})});$("#twitterShare").on("click",function(){ga("send","event","share","click","twitter",1,{nonInteraction:1})});
 $("#googleShare").on("click",function(){ga("send","event","share","click","google",1,{nonInteraction:1})});window.onbeforeunload=sendView;function sendView(){ga("send","pageview","/exit")}$(".keep-playing-button").on("click",function(){ga("send","event","game","click","continue",1,{nonInteraction:1})});$(".retry-button").on("click",function(){ga("send","event","game","click","retry",1,{nonInteraction:1});ga("send","pageview","/retry")});
 $('.loginBar').hover(function(){$('.loginFace').animate({'top': 54});});$('.loginBar').on('mouseleave', function(){$('.loginFace').animate({'top':0})});
+$('.onoffswitch-label').on('click',function(){
+    $("#timer").toggle(500);
+});

@@ -87,6 +87,12 @@ block content
             h1.title NumbersClash
             div.timer
                 span#timer 00 : 00 : 00 : 000
+                div.onoffswitch
+                    input.onoffswitch-checkbox#myonoffswitch(type="checkbox", name="onoffswitch", checked="checked")
+                    label.onoffswitch-label(for="myonoffswitch")
+                        div.onoffswitch-inner
+                        div.onoffswitch-switch
+
             div.scores-container
                 div.score-container 0
                 div.best-container 0
