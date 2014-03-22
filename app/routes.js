@@ -74,16 +74,29 @@ module.exports = function (app, passport, mongoose) {
         } else {
             var user = req.user;
 
-            if (user.scores.best < best) {
-                Users.update({ 'name.loginName': user.name.loginName },
-                { $set: { 'scores.best': best },
-                    $push: { 'scores.history': { score: score, date: date, time: time, won: won} }
-                },
-                function (err) {
-                    if (err) throw err;
-                    res.end();
-                });
+            if(best === score){
+
+                if (user.scores.best < best) {
+                    Users.update({ 'name.loginName': user.name.loginName },
+                    { $set: { 'scores.best': best },
+                        $push: { 'scores.history': { score: score, date: date, time: time, won: won} }
+                    },
+                    function (err) {
+                        if (err) throw err;
+                        res.end();
+                    });
+                } else {
+                    Users.update({ 'name.loginName': user.name.loginName },
+                    { $push: { 'scores.history': { score: score, date: date, time: time, won: won} }
+                    },
+                    function (err) {
+                        if (err) throw err;
+                        res.end();
+                    });
+                }
+
             } else {
+
                 Users.update({ 'name.loginName': user.name.loginName },
                 { $push: { 'scores.history': { score: score, date: date, time: time, won: won} }
                 },
@@ -91,8 +104,8 @@ module.exports = function (app, passport, mongoose) {
                     if (err) throw err;
                     res.end();
                 });
-            }
 
+            }
 
         }
 
