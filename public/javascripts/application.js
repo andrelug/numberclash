@@ -131,3 +131,7 @@ $('.facebookLog a').on('click', function () {
 $('.signupList a').on('click', function () {
     ga('send', 'event', 'register', 'click', 'signupPage', 1, { 'nonInteraction': 1 });
 });
+
+$('#donation').on('click', function () {
+    ga('send', 'event', 'donate', 'click', 'donation', 1, { 'nonInteraction': 1 });
+});
