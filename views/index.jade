@@ -58,7 +58,7 @@ block content
                                     td #{friend.scores.best}
                     else
                         br
-                        h2 Check how well you did in the leaderboards!
+                        h2 Compare you score with friends on the leaderboard!
                         br
                         ul.facebookLog
                             li
@@ -103,6 +103,14 @@ block content
                             label.onoffswitch-label(for="myonoffswitch")
                                 div.onoffswitch-inner
                                 div.onoffswitch-switch
+            else
+                div.timer
+                    span#timer 00 : 00 : 00 : 000
+                    div.onoffswitch
+                        input.onoffswitch-checkbox#myonoffswitch(type="checkbox", name="onoffswitch", checked="checked")
+                        label.onoffswitch-label(for="myonoffswitch")
+                            div.onoffswitch-inner
+                            div.onoffswitch-switch
 
             div.scores-container
                 div.score-container 0
@@ -157,3 +165,11 @@ block content
         p.created Based on the <a href="http://gabrielecirulli.github.io/2048/", alt="Gabriele's version", target="_blank">MIT licensed version</a> created by <a href="http://gabrielecirulli.com" target="_blank">Gabriele Cirulli</a>, which is based on <a href="https://itunes.apple.com/us/app/1024!/id823499224" target="_blank">1024 by Veewo Studio</a> and conceptually similar to <a href="http://asherv.com/threes/" target="_blank">Threes by Asher Vollmer.</a>
         hr
         p <strong>Contact and Feature Request:</strong> numbersclash@normalquestions.com
+        hr
+        p <strong> Donations: </strong> <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                                            <input type="hidden" name="cmd" value="_s-xclick">
+                                            <input type="hidden" name="hosted_button_id" value="VB5ERDLADVXJU">
+                                            <input type="image" src="http://www.pri-kenya.org/wp-content/uploads/2013/05/Pay-Pal-Donation.png" border="0" name="submit" alt="PayPal - A maneira mais fácil e segura de efetuar pagamentos online!">
+                                            <img alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1">
+                                            </form>
+
