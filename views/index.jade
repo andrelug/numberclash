@@ -166,10 +166,11 @@ block content
         hr
         p <strong>Contact and Feature Request:</strong> numbersclash@normalquestions.com
         hr
-        p <strong> Donations: </strong> <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                                            <input type="hidden" name="cmd" value="_s-xclick">
-                                            <input type="hidden" name="hosted_button_id" value="VB5ERDLADVXJU">
-                                            <input type="image" src="http://www.pri-kenya.org/wp-content/uploads/2013/05/Pay-Pal-Donation.png" border="0" name="submit" alt="PayPal - A maneira mais fácil e segura de efetuar pagamentos online!">
-                                            <img alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1">
-                                            </form>
+        p <strong> Donations: </strong>
+            form(action="https://www.paypal.com/cgi-bin/webscr&lc=US", method="post", style="width:200px;margin:0 auto;", target="_top")
+                input(type="hidden", name="cmd", value="_s-xclick")
+                input(type="hidden", name="hosted_button_id", value="VB5ERDLADVXJU")
+                input(type="image", src="images/paypal.png", border="0", name="submit", style="height: 96px;margin:0; width: 200px", alt="PayPal - A easiest and most secure way to make online payments!")
+                img(alt="", border="0", src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif", width="1", height="1")
+
 
