@@ -146,7 +146,10 @@ HTMLActuator.prototype.message = function (won, score, bestScore) {
             console.log(data);
         }
     });
-    
+
+    var dimensionValue = score;
+    ga('set', 'dimension1', dimensionValue);
+
     Stop();  
 
   this.messageContainer.classList.add(type);
