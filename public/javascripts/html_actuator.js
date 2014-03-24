@@ -147,18 +147,6 @@ HTMLActuator.prototype.message = function (won, score, bestScore) {
         }
     });
 
-    var dimensionValue = logged;
-    ga('set','dimension1', dimensionValue);
-
-    var metricValue = score;
-    ga('set', 'metric1', metricValue);
-
-    ga('send', 'event', 'category', 'action', {
-      'metric18': 8000
-    });
-
-    ga('send', 'event', 'game', 'finish', { 'metric1': metricValue, 'dimension1': dimensionValue });
-
     Stop();  
 
   this.messageContainer.classList.add(type);
