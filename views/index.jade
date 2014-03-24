@@ -1,7 +1,16 @@
 extends layout
 
 block content
+    script.
+        var logged;
 
+    if(user)
+        script.
+            logged = true;
+    else
+        script.
+            logged = false;
+        
     div.loginBar
         
         if(!user.id)

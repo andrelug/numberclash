@@ -147,8 +147,11 @@ HTMLActuator.prototype.message = function (won, score, bestScore) {
         }
     });
 
-    var dimensionValue = score;
-    ga('set', 'dimension1', dimensionValue);
+    var dimensionValue = logged;
+    ga('set','dimension1', dimensionValue);
+
+    var metricValue = score;
+    ga('set', 'metric1', metricValue);
 
     Stop();  
 
