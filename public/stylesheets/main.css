@@ -946,15 +946,15 @@ strong{
 @media screen and (min-width: 680px) and (max-width: 1150px) {
     .leaderboard{
         position: absolute;
-        top: 1300px !important;
-        right: 20% !important;
+        top: 1600px !important;
+        right: 30% !important;
     }
 }
 @media screen and (min-width: 520px) and (max-width: 680px) {
     .leaderboard {
         position: absolute;
-        top: 1300px !important;
-        right: 20% !important;
+        top: 1600px !important;
+        right: 30% !important;
     }
 
     .ad {
@@ -964,9 +964,12 @@ strong{
 @media screen and (max-width: 520px){
     .leaderboard{
         position: absolute;
-        top: 1140px !important;
+        top: 1310px !important;
         right: 15% !important;
     }
+    .ad{
+    display: none;
+}
 }
 
 .leaderboard{
@@ -1200,49 +1203,8 @@ table tr:nth-child(odd) {
         width: 48px !important;
         height: 48px !important;
     }
-    .onoffswitch {
-        position: absolute; width: 82px;
-        -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
-        top: 145px;left:65px;
-    }
+.onoffswitch{display: none}
 .loginFace{width: 148px;}
 .loginFace a{height: 30px !important;}
 
-    
-.onoffswitch-checkbox {
-    display: none;
-}
-.onoffswitch-label {
-    display: block; overflow: hidden; cursor: pointer;
-    border: 2px solid #FFFFFF; border-radius: 7px;
-}
-.onoffswitch-inner {
-    width: 200%; margin-left: -100%;
-    -moz-transition: margin 0.3s ease-in 0s; -webkit-transition: margin 0.3s ease-in 0s;
-    -o-transition: margin 0.3s ease-in 0s; transition: margin 0.3s ease-in 0s;
-}
-.onoffswitch-inner:before, .onoffswitch-inner:after {
-    float: left; width: 50%; height: 25px; padding: 0; line-height: 25px;
-    font-size: 15px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
-    -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
-}
-.onoffswitch-inner:before {
-    content: "ON";
-    padding-left: 14px;
-    background-color: #EEEEEE; color: #2FCCFF;
-}
-.onoffswitch-inner:after {
-    content: "OFF";
-    padding-right: 14px;
-    background-color: #EEEEEE; color: #999999;
-    text-align: right;
-}
-.onoffswitch-switch {
-    width: 25px; margin: 0px;
-    background: #A1A1A1;
-    border: 2px solid #FFFFFF; border-radius: 7px;
-    position: absolute; top: 0; bottom: 0; right: 53px;
-    -moz-transition: all 0.3s ease-in 0s; -webkit-transition: all 0.3s ease-in 0s;
-    -o-transition: all 0.3s ease-in 0s; transition: all 0.3s ease-in 0s; 
-}
     }
