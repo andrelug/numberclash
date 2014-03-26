@@ -9,7 +9,7 @@ if('development' == app.get('env')) {
     }
 }else{
     module.exports = {
-        'url': 'mongodb://test-k:gsdfAgLbB4AQMKcHWazo4RnvXMZ7fjTJMDnKv8dkJ8Y-@ds030817.mongolab.com:30817/test-k',
-        'url2': 'mongodb://test2:P4a.orlbd7BpGTTU8Iq3J7eFR4BLhq9fRM2NlWvfoRI-@ds030607.mongolab.com:30607/test2'
+        'url': 'mongodb://NumberClashMongo:kqqSHDyxCDyzOWVYaO50SksNu4Q8EoUd2Ykdhnc_7UE-@ds031088.mongolab.com:31088/NumberClashMongo',
+        'url2': 'mongodb://ncsessions:i127C0MLpkYCvPwMAZ.SCBuQy_cINeKuxPtPOG1z35c-@ds035747.mongolab.com:35747/ncsessions'
     }
 }
