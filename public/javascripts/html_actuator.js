@@ -146,6 +146,13 @@ HTMLActuator.prototype.message = function (won, score, bestScore) {
             console.log(data);
         }
     });
+    
+    points = score;
+    var facebookShare = "https://www.facebook.com/dialog/feed?app_id=471413439653703&link=http%3A%2F%2Fwww.numbersclash.com&picture=http%3A%2F%2Fwww.numbersclash.com%2Fimages%2Fnumbersclash.jpg&name=I+scored+" + points + "+points+in+Numbers+Clash%21+Can+you+beat+me%3F%21&description=A+better%2C+more+social+and+engaging+2048%2Fthrees+game%21&redirect_uri=http://facebook.com/";
+    var twitterShare = "https://twitter.com/home?status=%23NumbersClash%20I%20scored%20"+ points +"%20in%20Numbers%20Clash!%20Can%20you%20beat%20me?!%20Give%20it%20a%20try:%20http://bit.ly/OScOH8";
+
+$('.facebookShare').attr("href", facebookShare);
+$('.twitterShare').attr("href", twitterShare);
 
     Stop();  
 

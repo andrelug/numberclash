@@ -55,8 +55,8 @@ module.exports = function (app, passport, mongoose) {
         var sessionId = req.sessionID;
 
         if (!req.user) {
-            //var ipN = req.ip;
-            var ipN = ip.address();
+            var ipN = req.ip;
+            //var ipN = ip.address();
             var longi = ip.toLong(ipN);
 
             new Anon({
