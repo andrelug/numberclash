@@ -135,3 +135,10 @@ $('.signupList a').on('click', function () {
 $('#donation').on('click', function () {
     ga('send', 'event', 'donate', 'click', 'donation', 1, { 'nonInteraction': 1 });
 });
+
+$('.facebookShare').on('click', function () {
+    ga('send', 'event', 'share', 'click', 'scoreFacebook', 1, { 'nonInteraction': 1 });
+});
+$('.twitterShare').on('click', function () {
+    ga('send', 'event', 'share', 'click', 'scoreTwitter', 1, { 'nonInteraction': 1 });
+});
