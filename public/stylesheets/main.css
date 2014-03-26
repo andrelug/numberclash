@@ -325,6 +325,7 @@ hr {
 
 .grid-container {
   position: absolute;
+  overflow: hidden;
   z-index: 1; }
 
 .grid-row {

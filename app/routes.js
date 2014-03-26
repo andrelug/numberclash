@@ -357,6 +357,37 @@ module.exports = function (app, passport, mongoose) {
         );
     });
 
+    // =====================================
+    // FLAPPY ==============================
+    // =====================================
+    app.get('/flappy', function (req, res, next) {
+        
+        var user = req.user;
+        Anon.find({}, { score: 1, _id: 0 }).sort({ 'score': -1 }).limit(10).exec(function (err, docs) {
+            Users.find({}, { 'scores.best': 1, 'name.first': 1, 'photo': 1, _id: 0 }).sort({ 'scores.best': -1 }).limit(10).exec(function (err, udocs) {
+                if (!user) {
+                    res.render("flappy", { message: req.flash('signupMessage'), user: '', lead: docs, ulead: udocs });
+                } else {
+                    if (user.deleted === false) {
+                        var userId = [];
+                        for (i = 0; i < user.social.facebook.friends.length; i++) {
+                            userId.push(user.social.facebook.friends[i].id);
+                        }
+
+                        Users.find({ 'social.facebook.id': { $in: userId} }, { 'scores.best': 1, 'name.first': 1, 'photo': 1, _id: 0 }).sort({ 'scores.best': -1 }).limit(10).exec(function (err, friends) {
+                            req.session.name = req.user.name.loginName;
+                            sessionReload(req, res, next);
+                            res.render('flappy', { user: user, lead: docs, ulead: udocs, friends: friends });
+                        });
+                    } else {
+                        res.redirect('/users/restore');
+                    }
+                }
+            });
+        });
+
+    });
+
 
     // =====================================
     // CONFIGURATIONS ======================

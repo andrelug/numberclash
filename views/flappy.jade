@@ -1,0 +1,122 @@
+extends layoutflappy
+
+block content
+    script.
+        var logged;
+
+    if(user)
+        script.
+            logged = true;
+    else
+        script.
+            logged = false;
+        
+    div.loginBar
+        
+        if(!user.id)
+            div.login
+                ul
+                    li: a.loginUser(href="/login", alt="login") Login
+                    li: a.signup(href="/signup", alt="signup") Signup
+            div.loginFace
+                a.facebook(href="/auth/facebook") <i class="fa fa-facebook"></i> with Facebook
+        else
+            div.logged
+                ul
+                    li 
+                        a(href="/profile")
+                            if(user.photo)
+                                img.loginImg(src="#{user.photo}")
+                            else
+                                img.loginImg(src="images/avatar.png")
+                            |#{user.name.first}
+                    li: a(href="/logout") Log Out
+
+    div.container
+        div.heading
+            h1.title NumbersClash
+
+            div.scores-container
+                div.score-container 0
+                div.best-container 0
+        
+        p.game-intro Jump through the tiles and get to <strong>2048!<small>or more!</small></strong>
+
+        div.game-container
+            div.game-message
+                p
+                div.lower
+                    a.keep-playing-button keep going
+                    a.retry-button Try again
+                    br
+                    br
+                    a.facebookShare(target="_blank")<i class="fa fa-facebook"></i> Share your score!
+                    br
+                    br
+                    a.twitterShare(target="_blank")<i class="fa fa-twitter"></i> Tweet your score!
+
+            div.grid-container
+                div.grid-row
+                    div.grid-cell
+                    div.grid-cell
+                    div.grid-cell
+                    div.grid-cell
+                div.grid-row
+                    div.grid-cell
+                    div.grid-cell
+                    div.grid-cell
+                    div.grid-cell
+                div.grid-row
+                    div.grid-cell
+                    div.grid-cell
+                    div.grid-cell
+                    div.grid-cell
+                div.grid-row
+                    div.grid-cell
+                    div.grid-cell
+                    div.grid-cell
+                    div.grid-cell
+
+                div.tile.tile-block-a
+                    div.tile-inner
+                div.tile.tile-block-b
+                    div.tile-inner
+                div.tile.tile-block-c
+                    div.tile-inner
+                div.tile.tile-block-d
+                    div.tile-inner
+                div.tile.tile-bird
+                    div.tile-inner
+
+
+            div.tile-container
+        
+        div.sharing
+            ul
+                li(style="position:relative;")
+                    a.facebook#facebookShare(href="https://www.facebook.com/sharer/sharer.php?u=http://bit.ly/1iuNwt7", target="_blank") <i class="fa fa-facebook"></i> Share on Facebook
+                li
+                    a.twitter#twitterShare(href="https://twitter.com/home?status=%23NumbersClash%20http://bit.ly/OScOH8%20A%20better,%20more%20social%20and%20engagind,%202048/threes%20game!", target="_blank") <i class="fa fa-twitter"></i> Share on Twitter
+                li
+                    a.google#googleShare(href="https://plus.google.com/share?url=http://bit.ly/1iuNr8S", target="_blank") <i class="fa fa-google-plus"></i> Share on Google+
+
+        p.game-explanation <strong class="important">How to play:</strong> Press <strong>any key</strong> to move the tile. When the tile go through a barrier, you get <strong>score!</strong>
+        hr
+        p.created Based on the Flappy version by <a href="http://github.com/hczhcz" target="_blank">hcz</a>, which is based on the <a href="http://gabrielecirulli.github.io/2048/", alt="Gabriele's version", target="_blank">MIT licensed version</a> created by <a href="http://gabrielecirulli.com" target="_blank">Gabriele Cirulli</a>, which is based on <a href="https://itunes.apple.com/us/app/1024!/id823499224" target="_blank">1024 by Veewo Studio</a> and conceptually similar to <a href="http://asherv.com/threes/" target="_blank">Threes by Asher Vollmer;</a> and <a href="http://en.wikipedia.org/wiki/Flappy_Bird" target="_blank">Flappy Bird by Dong Nguyen.</a>
+        hr
+        p <strong>Contact and Feature Request:</strong> numbersclash@normalquestions.com
+        hr
+        p <strong> Donations: </strong>
+            form#donation(action="https://www.paypal.com/cgi-bin/webscr&lc=US", method="post", style="width:200px;margin:0 auto;", target="_top")
+                input(type="hidden", name="cmd", value="_s-xclick")
+                input(type="hidden", name="hosted_button_id", value="VB5ERDLADVXJU")
+                input(type="image", src="images/paypal.png", border="0", name="submit", style="height: 96px;margin:0; width: 200px", alt="PayPal - A easiest and most secure way to make online payments!")
+                img(alt="", border="0", src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif", width="1", height="1")
+
+        div.ad
+            script( async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js")
+            ins.adsbygoogle(style="display:inline-block;width:160px;height:600px", data-ad-client="ca-pub-5490301168615232", data ad-slot="4091067279")
+            script.
+                (adsbygoogle = window.adsbygoogle || []).push({});
+
+
