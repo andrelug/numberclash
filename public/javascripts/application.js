@@ -146,3 +146,6 @@ $('.twitterShare').on('click', function () {
 $('#flappy').on('click', function(){
     ga('send', 'event', 'flappy', 'click', 'toFlappyFromMainPage', 1, { 'nonInteraction': 1 });
 });
+$('#back').on('click', function(){
+    ga('send', 'event', 'flappy', 'click', 'toMainFromFlappy', 1, { 'nonInteraction': 1 });
+});
