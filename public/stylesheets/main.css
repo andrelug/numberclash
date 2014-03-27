@@ -1215,3 +1215,31 @@ table tr:nth-child(odd) {
 .twitterShare{
     background-color: #1AB4EF !important;
 }
+
+.topbar{
+    position: absolute;
+    top:  0px;
+    width: 25%;
+    background-color: #ea6153;
+    border-bottom: 2px solid #ecf0f1;
+    color: white;
+    font-size: 10pt;
+}
+.topbar a{
+    color: white;
+    font-size: 14pt;
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+}
+@media screen and (max-width: 520px) {
+    body{
+        margin-top: 40px;
+    }
+    .topbar{
+    width: 40%;
+    }
+    .topbar a{
+    padding: 4px;
+}
+}
