@@ -1,4 +1,4 @@
-// config/database.js
+// config/database.js ...problems with azure variables
 var express = require('express'),
     app = express();
 
