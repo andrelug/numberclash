@@ -1,3 +1,3 @@
 loggingEnabled: true
 
-devErrorsEnabled: false
+devErrorsEnabled: true

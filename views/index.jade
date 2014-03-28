@@ -38,6 +38,8 @@ block content
         
     div.leaderboard
         h2 Leaderboards
+        if (totalGames > 0)
+            h3.gamesCount #{totalGames} Games played
         section.tabs
             input#tab-1.tab-selector-1(type="radio", name="radio-set", checked="checked")
             label.tab-label-1(for="tab-1") Friends

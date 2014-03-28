@@ -31,3 +31,13 @@
     padding: 4px;
 }
 }
+.gamesCount{
+    text-align: center;
+}
+
+@media screen and (min-width: 1150px) and (max-width: 1300px) {
+    .leaderboard{
+    right: 0px !important;
+    width: 28% !important;
+}
+}

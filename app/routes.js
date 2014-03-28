@@ -22,10 +22,20 @@ module.exports = function (app, passport, mongoose) {
     app.get('/', function (req, res, next) {
 
         var user = req.user;
+        var totalGames;
+
+        Anon.count({}, function (err, anonCount) {
+            Users.aggregate([{ $unwind: '$scores.history' }, { $group: { _id: null, number: { $sum: 1}}}], function (err, userCount) {
+
+                totalGames = anonCount + userCount[0].number;
+
+            });
+        });
+
         Anon.find({}, { score: 1, _id: 0 }).sort({ 'score': -1 }).limit(10).exec(function (err, docs) {
             Users.find({}, { 'scores.best': 1, 'name.first': 1, 'photo': 1, _id: 0 }).sort({ 'scores.best': -1 }).limit(10).exec(function (err, udocs) {
                 if (!user) {
-                    res.render("index", { message: req.flash('signupMessage'), user: '', lead: docs, ulead: udocs });
+                    res.render("index", { message: req.flash('signupMessage'), user: '', lead: docs, ulead: udocs, totalGames: totalGames});
                 } else {
                     if (user.deleted === false) {
                         var userId = [];
@@ -36,7 +46,7 @@ module.exports = function (app, passport, mongoose) {
                         Users.find({ 'social.facebook.id': { $in: userId} }, { 'scores.best': 1, 'name.first': 1, 'photo': 1, _id: 0 }).sort({ 'scores.best': -1 }).limit(10).exec(function (err, friends) {
                             req.session.name = req.user.name.loginName;
                             sessionReload(req, res, next);
-                            res.render('index', { user: user, lead: docs, ulead: udocs, friends: friends });
+                            res.render('index', { user: user, lead: docs, ulead: udocs, friends: friends, totalGames: totalGames });
                         });
                     } else {
                         res.redirect('/users/restore');
@@ -361,7 +371,7 @@ module.exports = function (app, passport, mongoose) {
     // FLAPPY ==============================
     // =====================================
     app.get('/flappy', function (req, res, next) {
-        
+
         var user = req.user;
         Anon.find({}, { score: 1, _id: 0 }).sort({ 'score': -1 }).limit(10).exec(function (err, docs) {
             Users.find({}, { 'scores.best': 1, 'name.first': 1, 'photo': 1, _id: 0 }).sort({ 'scores.best': -1 }).limit(10).exec(function (err, udocs) {
